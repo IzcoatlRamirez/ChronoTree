@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  username String    @unique
+  password String
+  Nodos   Nodos[] //campo opuesto en la relación
+  Aristas Aristas[] //campo opuesto en la relación
+  NodosConyuge NodosConyuge[] //campo opuesto en la relación
+  AristasConyuge AristasConyuge[] //campo opuesto en la relación
+}
+
+model Nodos {
+  id Int @id @default(autoincrement())
+  imageUrl String?
+  nombre String
+  fechaNacimiento String
+  lugarNacimiento String
+  User User @relation(fields: [userId], references: [id])
+  userId Int
+  X Float
+  Y Float
+  Root Aristas[] @relation(name:"RootId")
+  Child Aristas[] @relation(name:"ChildId")
+  RootConyuge AristasConyuge[] @relation(name:"RootConyugeId") //campo opuesto en la relación
+
+}
+
+model Aristas {
+  id Int @id @default(autoincrement())
+  X Float 
+  Y Float
+  X2 Float
+  Root Nodos @relation(name:"RootId",fields: [rootId], references: [id])
+  rootId Int  
+  Child Nodos @relation(name:"ChildId",fields: [childId], references: [id])
+  childId Int
+  User User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model NodosConyuge {
+  id Int @id @default(autoincrement())
+  imageUrl String?
+  nombre String
+  fechaNacimiento String
+  lugarNacimiento String
+  User User @relation(fields: [userId], references: [id])
+  userId Int
+  X Float
+  Y Float
+  Conyuge AristasConyuge[] @relation(name:"ConyugeId") //campo opuesto en la relación
+}
+
+model AristasConyuge{
+  id Int @id @default(autoincrement())
+  X Float
+  Y Float
+  Root Nodos @relation(name:"RootConyugeId",fields: [rootId], references: [id])
+  rootId Int  @unique
+  Conyuge NodosConyuge @relation(name:"ConyugeId",fields: [conyugeId], references: [id])
+  conyugeId Int @unique
+  User User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+
+
+
+
+
+
+
+
+
+
+

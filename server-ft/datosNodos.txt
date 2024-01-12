@@ -1,0 +1,55 @@
+El primer nodo por defecto se ubicara en el centro de la pantalla, en las coordenadas
+x = 600 y = 0.
+
+Medidas de los nodos:
+-ancho: 200-216 px
+-largo promedio de 400xp
+
+Cada nodo se posiciona en coordenadas dentro de su div contenedor (x,y) con respecto a la esquina superior izquierda del div contenedor.
+
+
+Distancia horizDistancia horizontal sugerida entre nodos hermanos 500px , asi dejamos espacio para conyuges.
+
+Distancia vertical sugeria entre nodos padre a nodos hijo 100px
+
+El primer nodo hijo por default se inserta a -400x + 400y de su nodo padre.
+
+trabajar solo con coordenadas x,y? para nodos . 
+
+x1,x2,y1,y2 para aristas.
+
+En cada nodo necesitamos guardar Foto , nombre , fecha de nacimiento , lugar de nacimiento, y un crud de relatos.
+
+Se necesita poder cambiar contrasenia de usuario y nombre de usuario y cerrar sesion.
+
+se necesita Una tabla nodos padre.
+
+Se necesita una tabla nodos conyuge para evitar que estos puedan agregar hijos o conyuges.
+
+Se necesita una tabla aristas para guardar las aristas de todos los nodos.
+
+Se necesita una tabla nodos hijos para poder recorrer los hijos existentes si los hay en caso de insercion o eliminacion. Los nodos hijos siempre se agregan al final para evitar recorrer a otros nodos hijo que tengan hijos tambien. por medio de obtener el ultimo hijo añadido? (esto solo funciona si los nodos hijo tienen su propia linea).
+
+
+Metodo descendente:
+
+  cada nodo hijo en insertado siembre hacia abajo de su padre , conyuges a la derecha de cada nodo , y para cuando un nodo agrege hijos , pedimos su padre y a todo sus nodos hijo con id mayor al de currenNode los recorremos mas hacia abajo . (el arbol crece horizontal y hacia abajo)
+  
+
+En realidad tambien funciona horizonatal , para recorrer se trata de acceder al nodo padre , pedir todos sus hijos , y recursivamente si tienen hijos , recorrerlos a la derecha si es insercion y a la izquierda si es eliminacion, las coordenadas se regiran por reglas en base al espacio necesario para el conyuge y el tamanio de los nodos, tanto en ancho como en largo. 
+
+
++-------------------+Tabla de aristas: habla una tabla de relacion arista nodo , al eliminar un nodo , buscamos su arista y la eliminamos tambien .(id, nodoVertiente(foreig key), y coordenadas.)
+
++-------------------+ Tabla de Nodos: Esta tabla almacenará la información de cada nodo, incluyendo su posición (x, y). Cada nodo puede tener un cónyuge y varios hijos. Los campos podrían ser: id, nombre, conyuge_id (referencia a otro nodo), positionX, positionY.
+
++--------------------+Tabla de Relaciones: Esta tabla almacenará las relaciones entre los nodos, es decir, quién es hijo de quién. Los campos podrían ser: id, padre_id (referencia a un nodo), hijo_id (referencia a un nodo).
+
+
+EL nodo conyuge se agrega a la misma altura del nodo que lo inserta y a +260 pixeles de X del nodo que inserta
+La arista conyuge solo necesita X y Y del nodo que inserta
+
+
+se necesitan 3 tablas nodos , conyuges y aristas , para limitar las acciones de cada uno mediante componentes de react 
+
+Proxima tarea , modificar toda la base de datos y usar Redux para el contexto 
