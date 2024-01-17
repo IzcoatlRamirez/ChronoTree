@@ -17,11 +17,12 @@
 export interface Node{
     id: number;
     imageUrl?: string;
-    nombre?: string;
-    fechaNacimiento?: string;
-    lugarNacimiento?: string;
-    X: number;
-    Y: number;
+    nombre: string;
+    fechaNacimiento: string;
+    fechaDefuncion?: string;
+    lugarNacimiento: string;
+    X?: number;
+    Y?: number;
     updateNodes : ()=> void;
     updateNodesConyuge: ()=> void;
 }

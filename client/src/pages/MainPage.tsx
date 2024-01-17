@@ -27,7 +27,6 @@ function MainPage() {
        console.log(error)
      }
     };
-
     //renderizar aristas
     const fetchAristas = async () => {
       try{
@@ -37,12 +36,11 @@ function MainPage() {
         console.log(error)
       }
     };
-    
     //renderizar nodosConyuge
     const fetchNodesConyuge = async () => {
       try{
         const nodesConyuge = await getNodosConyuge();
-      setNodesConyuge(nodesConyuge.data);
+        setNodesConyuge(nodesConyuge.data);
       }catch(error){
         console.log(error)
       }
@@ -54,7 +52,6 @@ function MainPage() {
      try{
       const aristasConyuge = await getAristasConyuge();
       setAristasConyuge(aristasConyuge.data);
-      console.log(aristasConyuge.data)
      }catch(error){
        console.log(error)
      }
@@ -122,6 +119,8 @@ function MainPage() {
           nombre={node.nombre}
           fechaNacimiento={node.fechaNacimiento}
           lugarNacimiento={node.lugarNacimiento}
+          fechaDefuncion={node.fechaDefuncion}
+          imageUrl={node.imageUrl}
           updateNodes={updateNodes}
           updateNodesConyuge={updateNodesConyuge}
         />
@@ -136,6 +135,8 @@ function MainPage() {
           nombre={node.nombre}
           fechaNacimiento={node.fechaNacimiento}
           lugarNacimiento={node.lugarNacimiento}
+          fechaDefuncion={node.fechaDefuncion}
+          imageUrl={node.imageUrl}
           updateNodes={updateNodes}
           updateNodesConyuge={updateNodesConyuge}
         />
@@ -158,9 +159,6 @@ function MainPage() {
         Y={arista.Y}
         X2={arista.X2}
         />))} 
-
-        {/* <Nodo id={2} nombre="hijo1" fechaNacimiento="6 de mayo del 2003" X={250} Y={460} updateNodes={updateNodesConyuge}></Nodo>
-        <AristaNode id={5} X={250} Y={50} X2={250}></AristaNode> */}
     </div>
     </>
   )

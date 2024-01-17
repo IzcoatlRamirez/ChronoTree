@@ -16,7 +16,7 @@ import Cookies from 'js-cookie';
 import {blue} from '@mui/material/colors';
 import { Typography } from '@mui/material';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right' ;
+type Anchor = 'left'  ;
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -63,7 +63,7 @@ export default function SwipeableTemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250}}
+      sx={{width:250}}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}

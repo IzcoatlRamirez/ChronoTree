@@ -10,6 +10,7 @@ import { amber,red,teal} from '@mui/material/colors';
 import {Dialog,DialogContent} from "@mui/material";
 import { createConyuge,createChild,haveConyuge,haveNodeDependencies,deleteChild} from '../services/NodesService';
 import { NodeRoot } from '../interfaces/Nodes';
+import FormEdit from './FormEdit';
 
 
 function MenuNodo({id,updateNodes,updateNodesConyuge}:NodeRoot) {
@@ -150,7 +151,7 @@ function MenuNodo({id,updateNodes,updateNodesConyuge}:NodeRoot) {
 
         <Dialog open={openEdit} onClose={handleCloseEdit}>
         <DialogContent>
-          <h1>Este es un formedit</h1>
+          <FormEdit id={id} updateNodes={updateNodes} updateNodesConyuge={updateNodesConyuge}/>
         </DialogContent>
       </Dialog>
       </div>

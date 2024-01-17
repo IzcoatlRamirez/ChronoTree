@@ -9,7 +9,7 @@ import { Node } from '../interfaces/Nodes';
 
 //foto , nombre , fecha de nacimiento , lugar de nacimiento 
 
-function Nodo({id,imageUrl,nombre,fechaNacimiento,lugarNacimiento,X,Y,updateNodes,updateNodesConyuge}:Node) {
+function Nodo({id,imageUrl,nombre,fechaNacimiento,lugarNacimiento,fechaDefuncion,X,Y,updateNodes,updateNodesConyuge}:Node) {
   return (
     <Card sx={{ maxWidth: 210, minWidth:210, maxHeight:320,minHeight:320,p:1, position:'absolute', left:X,top:Y, display:'inline-block'}}>
 
@@ -21,7 +21,8 @@ function Nodo({id,imageUrl,nombre,fechaNacimiento,lugarNacimiento,X,Y,updateNode
         </div>
         <div style={{marginBottom:7,display:'flex',flexDirection:'row'}}>
         <DateRangeIcon sx={{color:"#646cff"}}fontSize='medium'></DateRangeIcon>
-        <Typography>{fechaNacimiento}</Typography>
+        <Typography sx={{fontSize:14}}
+        >{fechaNacimiento}</Typography>{fechaDefuncion ? <Typography sx={{fontSize:14}}>/{fechaDefuncion}</Typography> : null}
         </div>
         <div style={{display:'flex', flexDirection:'row',marginBottom:15}}>
         <FmdGoodIcon sx={{ color: pink[500] }}  fontSize='medium'></FmdGoodIcon>
